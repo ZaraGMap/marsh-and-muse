@@ -123,7 +123,7 @@
         sections, each with a grounding introduction, a curated reading list, and space to write.
       </p>
       <div class="journal__buy">
-        <a class="mm-btn" href="#" aria-label="Get the journal on Amazon">Get the Journal</a>
+        <a class="mm-btn" href="https://www.amazon.co.uk/Art-Soft-Slow-Living-Intentional/dp/B0FRY3TC4F" target="_blank" rel="noopener" aria-label="Get the journal on Amazon">Get the Journal</a>
         <span>Available on Amazon</span>
       </div>
     </div>
@@ -190,7 +190,14 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
-  // 7 Day Reset — validate + confirm
+  // ── 7 Day Reset signup → MailerLite ──────────────────────────────
+  // Posts to the branded form "The 7 Day Reset — Signup" (ID 189018871730013769),
+  // which adds subscribers to the "7 Day Reset Freebie" group (ID 180381151988286588),
+  // which triggers the "The 7 Day Reset" automation (one email a day for seven days).
+  // Note: this form uses double opt-in — subscribers confirm via a first email,
+  // then the daily sequence begins.
+  var MAILERLITE_SUBSCRIBE_URL = 'https://assets.mailerlite.com/jsonp/2075724/forms/189018871730013769/subscribe';
+
   var form = document.getElementById('resetForm');
   var input = document.getElementById('resetEmail');
   var reset = document.getElementById('reset');
@@ -202,7 +209,18 @@
   input.addEventListener('input', syncValid);
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (syncValid()) reset.classList.add('done');
+    if (!syncValid()) return;
+    if (MAILERLITE_SUBSCRIBE_URL) {
+      var body = 'fields[email]=' + encodeURIComponent(input.value) + '&ml-submit=1&anticsrf=true';
+      // no-cors: MailerLite returns an opaque response; the subscribe still registers server-side.
+      fetch(MAILERLITE_SUBSCRIBE_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body
+      }).catch(function () {});
+    }
+    reset.classList.add('done');
   });
 </script>
 
