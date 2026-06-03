@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="What if the most intentional thing you did this summer was leave space in it? A quiet argument for underscheduling — and why doing less is not the same as being less." />
+  <meta property="og:title" content="The case for underscheduling your summer — Marsh & Muse" />
+  <meta property="og:description" content="What if the most intentional thing you did this summer was leave space in it?" />
+  <meta property="og:image" content="https://marshmuse.com/assets/journal-hero-photo.png" />
+  <meta property="og:type" content="article" />
+  <meta name="theme-color" content="#5C6B52" />
+  <title>The case for underscheduling your summer — Marsh &amp; Muse</title>
+  <style>
+    /* ---- BRAND FONTS ------------------------------------------------ */
+    @font-face {
+      font-family: 'DM Serif Display';
+      font-style: normal; font-weight: 400; font-display: swap;
+      src: url('../fonts/DMSerifDisplay-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'DM Serif Display';
+      font-style: italic; font-weight: 400; font-display: swap;
+      src: url('../fonts/DMSerifDisplay-Italic.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal; font-weight: 100 900; font-display: swap;
+      src: url('../fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: italic; font-weight: 100 900; font-display: swap;
+      src: url('../fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+    }
+
+    /* ---- BRAND TOKENS ----------------------------------------------- */
+    :root {
+      --linen-white: #F7F5F0;
+      --warm-linen:  #E8E4DC;
+      --sage-mid:    #A8B5A2;
+      --sage-deep:   #6B7B65;
+      --forest:      #2C3328;
+      --deep-moss:   #5C6B52;
+      --cream:       #F4F0E6;
+      --warm-white:  #E8E2D4;
+      --sage-accent: #A8B59E;
+
+      --font-display: 'DM Serif Display', 'Hoefler Text', Georgia, serif;
+      --font-body:    'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+
+      --ease-slow: cubic-bezier(0.22, 0.61, 0.36, 1);
+      --dur-fast: 220ms;
+      --dur-base: 420ms;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background: var(--linen-white);
+      color: var(--sage-deep);
+      font-size: 17px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ---- NAV -------------------------------------------------------- */
+    .site-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(22px, 5vw, 64px); height: 72px;
+      background: rgba(247,245,240,0.95);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--warm-linen);
+      position: sticky; top: 0; z-index: 20;
+    }
+    .site-header__mark {
+      font-family: var(--font-body); font-weight: 300; font-size: 14px;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--forest);
+    }
+    .site-nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 40px); }
+    .site-nav a {
+      font-family: var(--font-body); font-weight: 300; font-size: 11.5px;
+      letter-spacing: 0.13em; text-transform: uppercase; color: var(--sage-deep);
+      transition: color var(--dur-fast);
+    }
+    .site-nav a:hover { color: var(--forest); }
+    @media (max-width: 600px) { .site-nav .nav-hide { display: none; } }
+
+    /* ---- ARTICLE HEADER -------------------------------------------- */
+    .article-hero {
+      background: var(--deep-moss);
+      text-align: center;
+      padding: clamp(56px, 10vh, 104px) clamp(22px, 8vw, 80px) clamp(48px, 8vh, 88px);
+    }
+    .label {
+      font-family: var(--font-body); font-weight: 300; font-size: 11px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--sage-accent); margin: 0 0 20px;
+    }
+    .article-hero h1 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.08;
+      letter-spacing: 0.02em; color: var(--cream); margin: 0 0 20px;
+    }
+    .article-hero h1 em { font-style: italic; color: var(--warm-white); }
+    .article-hero .standfirst {
+      font-family: var(--font-body); font-weight: 300;
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem); line-height: 1.7;
+      color: var(--cream); opacity: 0.9; max-width: 480px; margin: 0 auto 24px;
+      letter-spacing: 0.01em; font-style: italic;
+    }
+    .article-hero .article-meta {
+      font-family: var(--font-body); font-weight: 300; font-size: 11px;
+      letter-spacing: 0.13em; text-transform: uppercase; color: var(--sage-accent);
+    }
+
+    /* ---- ARTICLE BODY ---------------------------------------------- */
+    .article-body {
+      max-width: 680px; margin: 0 auto;
+      padding: clamp(48px, 8vh, 88px) clamp(22px, 6vw, 48px);
+    }
+
+    .article-body p {
+      font-family: var(--font-body); font-weight: 400;
+      font-size: 17px; line-height: 1.8;
+      color: var(--sage-deep); margin-bottom: 1.6rem;
+    }
+
+    .article-body h2 {
+      font-family: var(--font-display); font-weight: 400; font-style: italic;
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem); line-height: 1.2;
+      letter-spacing: 0.02em; color: var(--forest);
+      margin: 2.5rem 0 1rem;
+    }
+
+    .article-body blockquote {
+      border-left: 2px solid var(--sage-mid);
+      margin: 2.5rem 0;
+      padding: 0 0 0 1.75rem;
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.45;
+      color: var(--forest); letter-spacing: 0.02em;
+    }
+
+    .article-body ul {
+      margin: 0 0 1.6rem 1.25rem;
+    }
+    .article-body ul li {
+      font-family: var(--font-body); font-weight: 400; font-size: 17px;
+      line-height: 1.75; color: var(--sage-deep); margin-bottom: 0.5rem;
+    }
+
+    .article-divider {
+      text-align: center; color: var(--sage-mid);
+      font-size: 1rem; letter-spacing: 0.5em;
+      margin: 2.5rem 0; opacity: 0.7;
+    }
+
+    /* ---- INLINE CTA ------------------------------------------------ */
+    .inline-cta {
+      background: var(--warm-linen);
+      border-left: 3px solid var(--deep-moss);
+      padding: 1.75rem 2rem;
+      margin: 3rem 0;
+      border-radius: 0 2px 2px 0;
+    }
+    .inline-cta .label { margin-bottom: 8px; }
+    .inline-cta p {
+      font-size: 15px; color: var(--sage-deep); margin-bottom: 1rem !important;
+    }
+    .inline-cta a {
+      font-family: var(--font-body); font-weight: 300; font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--forest);
+      border-bottom: 1px solid var(--sage-mid); padding-bottom: 1px;
+      transition: border-color var(--dur-fast);
+    }
+    .inline-cta a:hover { border-color: var(--forest); }
+
+    /* ---- RESET CTA STRIP ------------------------------------------- */
+    .reset-cta {
+      background: var(--deep-moss); text-align: center;
+      padding: clamp(64px, 12vh, 120px) clamp(22px, 8vw, 80px);
+    }
+    .reset-cta h2 {
+      font-family: var(--font-display); font-weight: 400;
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.1;
+      letter-spacing: 0.02em; color: var(--cream); margin: 20px 0 16px;
+    }
+    .reset-cta h2 em { font-style: italic; color: var(--warm-white); }
+    .reset-cta p {
+      font-family: var(--font-body); font-weight: 300; font-size: 16px;
+      line-height: 1.7; color: var(--cream); opacity: 0.9;
+      max-width: 420px; margin: 0 auto 36px; letter-spacing: 0.01em;
+    }
+    .mm-btn {
+      display: inline-block;
+      font-family: var(--font-body); font-weight: 400; font-size: 0.75rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 1rem 2.25rem; border-radius: 2px;
+      border: 1px solid var(--sage-accent);
+      background: transparent; color: var(--cream);
+      transition: background var(--dur-fast) var(--ease-slow);
+    }
+    .mm-btn:hover { background: rgba(244,240,230,0.08); }
+
+    /* ---- BACK LINK ------------------------------------------------- */
+    .back-wrap {
+      text-align: center; padding: 2rem;
+      border-top: 1px solid var(--warm-linen);
+    }
+    .back-link {
+      font-family: var(--font-body); font-weight: 300; font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-mid);
+      border-bottom: 1px solid var(--warm-linen); padding-bottom: 1px;
+      transition: color var(--dur-fast), border-color var(--dur-fast);
+    }
+    .back-link:hover { color: var(--forest); border-color: var(--sage-mid); }
+
+    /* ---- FOOTER ---------------------------------------------------- */
+    .site-footer {
+      background: var(--forest);
+      padding: clamp(48px, 8vh, 80px) clamp(22px, 8vw, 80px) 36px;
+      text-align: center;
+    }
+    .site-footer__mark {
+      font-family: var(--font-body); font-weight: 300; font-size: 14px;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .site-footer__tagline {
+      font-family: var(--font-display); font-style: italic; font-size: 18px;
+      color: var(--sage-accent); margin: 0 0 32px; letter-spacing: 0.01em;
+    }
+    .site-footer nav {
+      display: flex; justify-content: center; gap: 28px;
+      flex-wrap: wrap; margin-bottom: 36px;
+    }
+    .site-footer nav a {
+      font-family: var(--font-body); font-weight: 300; font-size: 11px;
+      letter-spacing: 0.13em; text-transform: uppercase; color: var(--sage-accent);
+      transition: color var(--dur-fast);
+    }
+    .site-footer nav a:hover { color: var(--cream); }
+    .site-footer__legal {
+      border-top: 1px solid rgba(168,181,158,0.2); padding-top: 24px;
+      font-family: var(--font-body); font-weight: 300; font-size: 10.5px;
+      letter-spacing: 0.08em; color: rgba(244,240,230,0.45);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="site-header__mark" href="/">Marsh &amp; Muse</a>
+    <nav class="site-nav">
+      <a class="nav-hide" href="/#story">Story</a>
+      <a class="nav-hide" href="/#journal">The Journal</a>
+      <a href="/#reset">The Reset</a>
+      <a href="/blog.html">Journal</a>
+    </nav>
+  </header>
+
+  <div class="article-hero">
+    <p class="label">Slow Living · June 2026</p>
+    <h1>The case for <em>underscheduling</em> your summer</h1>
+    <p class="standfirst">What if the most intentional thing you did this season was leave space in it?</p>
+    <p class="article-meta">By Marsh &amp; Muse · 5 min read</p>
+  </div>
+
+  <article class="article-body">
+
+    <p>There is a particular kind of tiredness that arrives in June. Not the tiredness of having done too much — though that, too — but the tiredness of having planned too much. The summer mapped out before it has even begun. The weekends already spoken for. The good weather already earmarked.</p>
+
+    <p>We do it with the best of intentions. Summer is precious, we tell ourselves. It should be full. It should be memorable. And so we fill it — with trips and gatherings and commitments, with all the things we have been meaning to do — until the season itself starts to feel like another thing we have to get through.</p>
+
+    <blockquote>
+      Underscheduled is not lazy. It is not careless. It is, perhaps, the most deliberate choice you can make in a world that profits from your busyness.
+    </blockquote>
+
+    <h2>The myth of the full life</h2>
+
+    <p>Somewhere along the way, we started measuring the quality of our lives by their density. A full diary became shorthand for a full life. To be busy was to be valued. To have nothing planned on a Saturday felt wasteful — or worse, like evidence of something missing.</p>
+
+    <p>But density and richness are not the same thing. A day with nowhere to be, nothing to perform, no version of yourself to show up as — that day has texture too. It has the particular quality of light that only lands when you are not rushing through it.</p>
+
+    <p>What slow living has always understood is that presence is not a personality trait. It is a condition. And it requires space to exist.</p>
+
+    <h2>What underscheduling actually looks like</h2>
+
+    <p>This is not about cancelling everything. It is not a retreat or a radical overhaul. It is quieter than that, and more sustainable.</p>
+
+    <p>Underscheduling is the practice of deliberately leaving pockets of your time uncommitted. Not empty — just unassigned. A Sunday afternoon with no plan. A Tuesday evening with nowhere to be. A weekend that doesn't begin with a list.</p>
+
+    <p>In practice, it might look like:</p>
+
+    <ul>
+      <li>Saying no to one thing this week that you would have said yes to out of obligation</li>
+      <li>Leaving at least one weekend day without a fixed plan</li>
+      <li>Protecting your mornings — even just the first hour — from other people's agendas</li>
+      <li>Resisting the urge to fill a cancelled commitment with a new one</li>
+    </ul>
+
+    <p>Small things. Quietly radical.</p>
+
+    <div class="article-divider">· · ·</div>
+
+    <h2>The nervous system case</h2>
+
+    <p>There is a physiological argument here too. Our nervous systems were not built for the pace we are asking them to hold. Chronic overscheduling keeps the body in a low-level state of alertness — not quite stressed, but never quite at rest. The sort of background hum you stop noticing until it stops.</p>
+
+    <p>Real rest — the kind that restores rather than merely pauses — requires a nervous system that believes there is nothing it needs to be doing right now. That safety signal does not come from a holiday once a year. It comes from the ordinary days being a little less full.</p>
+
+    <p>When women describe what draws them to slow living, they rarely use the language of productivity. They say things like: <em>I wanted to feel like myself again. I wanted to stop feeling behind. I wanted to actually be in my life, not just moving through it.</em></p>
+
+    <p>These are nervous system problems. And they have nervous system solutions.</p>
+
+    <div class="inline-cta">
+      <p class="label">Begin here</p>
+      <p>If you want to feel what a slower week actually looks like in practice — not in theory — the 7-Day Reset is a gentle place to start. One email a day. No pressure. Always free.</p>
+      <a href="https://marshmuse.com/#reset">Begin the 7-Day Reset →</a>
+    </div>
+
+    <h2>Permission to leave it open</h2>
+
+    <p>Here is what nobody tells you about underscheduling: the first few times you do it, it feels uncomfortable. The unplanned afternoon arrives and the old instinct reaches for something to fill it with. A task, a scroll, a plan. Anything to justify the time.</p>
+
+    <p>That discomfort is not a sign that you are doing it wrong. It is a sign that you have been doing it differently for a long time, and that something in you is learning a new thing.</p>
+
+    <p>Give it a moment. Let the afternoon be what it wants to be. Notice what surfaces when you stop managing every hour.</p>
+
+    <p>Often, it is something you had forgotten you enjoyed. A walk with no destination. A chapter read in good light. The particular pleasure of a cup of tea made slowly, drunk without looking at your phone.</p>
+
+    <div class="article-divider">· · ·</div>
+
+    <p>This summer, consider leaving some of it open. Not all of it — just enough. Enough that when something unexpectedly good arrives, there is room for it.</p>
+
+    <p>Underscheduled is not lazy. It is, in its quiet way, the most intentional thing you can be.</p>
+
+  </article>
+
+  <section class="reset-cta">
+    <p class="label">Your soft reset</p>
+    <h2>Seven days. One email a day. <em>No pressure.</em></h2>
+    <p>A gentle introduction to slow living, delivered to your inbox. Free, always.</p>
+    <a class="mm-btn" href="https://marshmuse.com/#reset">Begin the 7-Day Reset</a>
+  </section>
+
+  <div class="back-wrap">
+    <a class="back-link" href="/blog.html">← Back to the journal</a>
+  </div>
+
+  <footer class="site-footer">
+    <p class="site-footer__mark">Marsh &amp; Muse</p>
+    <p class="site-footer__tagline">Live slowly. Live beautifully.</p>
+    <nav>
+      <a href="/#journal">The Journal</a>
+      <a href="/#story">Our Story</a>
+      <a href="/#reset">7-Day Reset</a>
+      <a href="/blog.html">Blog</a>
+      <a href="https://www.pinterest.com/MarshandMuse" target="_blank" rel="noopener">Pinterest</a>
+      <a href="https://www.instagram.com/marsh.muse" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+    <p class="site-footer__legal">© 2026 Marsh &amp; Muse · marshmuse.com</p>
+  </footer>
+
+</body>
+</html>
