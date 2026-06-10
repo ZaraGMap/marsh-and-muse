@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to add a post &middot; The Long Field</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="brand.css">
+<style>
+  .guide { padding-top:clamp(32px,4vw,52px); padding-bottom:clamp(48px,6vw,80px); }
+  .guide h1 {
+    font-family:var(--font-display); font-weight:400; color:var(--forest);
+    font-size:clamp(2.4rem,5vw,3.6rem); line-height:1.05; letter-spacing:.01em; margin:0 0 12px;
+  }
+  .guide .lede {
+    font-family:var(--font-display); font-style:italic; color:var(--sage-deep);
+    font-size:clamp(1.1rem,2vw,1.4rem); margin:0 0 8px; line-height:1.4;
+  }
+  .step {
+    display:grid; grid-template-columns:auto 1fr; gap:22px;
+    padding:30px 0; border-top:1px solid var(--warm-linen); align-items:start;
+  }
+  .step:last-of-type { border-bottom:1px solid var(--warm-linen); }
+  .step .num {
+    font-family:var(--font-display); font-size:34px; color:var(--sage-mid);
+    line-height:1; min-width:48px;
+  }
+  .step h2 {
+    font-family:var(--font-display); font-weight:400; color:var(--forest);
+    font-size:1.5rem; line-height:1.2; margin:2px 0 12px;
+  }
+  .step p { font-weight:300; font-size:15px; line-height:1.75; color:var(--sage-deep); margin:0 0 12px; max-width:62ch; }
+  .step p:last-child { margin-bottom:0; }
+  .step strong { font-weight:400; color:var(--forest); }
+  code, .code {
+    font-family:'SFMono-Regular', Menlo, Consolas, monospace;
+    font-size:.86em; background:var(--warm-linen); color:var(--forest);
+    padding:2px 7px; border-radius:3px;
+  }
+  pre {
+    background:var(--forest); color:var(--cream); border-radius:4px;
+    padding:22px 24px; overflow:auto; margin:14px 0 0;
+    font-family:'SFMono-Regular', Menlo, Consolas, monospace; font-size:13px; line-height:1.7;
+  }
+  pre .c { color:var(--sage-accent); }
+  .callout {
+    background:var(--warm-white); border:1px solid var(--warm-linen); border-radius:4px;
+    padding:22px 26px; margin:34px 0 0;
+  }
+  .callout p { font-weight:300; font-size:14px; line-height:1.7; color:var(--sage-deep); margin:0; max-width:64ch; }
+  .callout .label { display:block; font-weight:300; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--sage-mid); margin-bottom:8px; }
+  .cheats { margin-top:18px; border-collapse:collapse; width:100%; }
+  .cheats td { border-top:1px solid var(--warm-linen); padding:11px 12px 11px 0; font-size:14px; color:var(--sage-deep); font-weight:300; vertical-align:top; }
+  .cheats td:first-child { width:240px; }
+</style>
+</head>
+<body>
+
+  <header class="wrap pad sitenav">
+    <a class="wordmark" href="../">Marsh &amp; Muse</a>
+    <nav>
+      <a href="index.html">The Blog</a>
+      <a href="how-to-add-a-post.html" class="active">Add a post</a>
+    </nav>
+  </header>
+
+  <main class="wrap--narrow pad guide">
+    <p class="kicker" style="margin-bottom:16px">For the content team</p>
+    <h1>Publishing to The Long Field</h1>
+    <p class="lede">A new piece every Sunday — here&rsquo;s how, start to finish.</p>
+    <p style="font-weight:300; font-size:15px; line-height:1.75; color:var(--sage-deep); max-width:62ch; margin-top:18px;">
+      You never touch the design. Every post is a single plain-text file written in Markdown.
+      You write it, drop it in a folder, add one line to a list, and it&rsquo;s live. No code, no build step.
+      Most weeks this takes about five minutes.
+    </p>
+
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <h2>Start from the template</h2>
+        <p>In the <code>posts</code> folder you&rsquo;ll find <code>_TEMPLATE.md</code>. Make a copy of it
+        and rename the copy to describe your post, using lowercase words joined by hyphens — no spaces, no capitals.
+        This filename becomes the post&rsquo;s web address (its <em>slug</em>).</p>
+        <pre><span class="c"># good filenames</span>
+the-art-of-the-unhurried-sunday.md
+why-we-stopped-writing-letters.md</pre>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">2</div>
+      <div>
+        <h2>Fill in the details at the top</h2>
+        <p>The block between the two <code>---</code> lines is the post&rsquo;s information. Fill each field in.
+        Keep them on their own lines exactly as shown.</p>
+        <pre>---
+<span class="c">title:</span> What a nervous system reset actually looks like
+<span class="c">desk:</span> Mindful
+<span class="c">date:</span> 2026-06-14
+<span class="c">readingTime:</span> 5 min
+<span class="c">author:</span> Zara
+<span class="c">dek:</span> And why your journal is the best tool for it.
+<span class="c">hero:</span>
+---</pre>
+        <table class="cheats">
+          <tr><td><strong>title</strong></td><td>The headline. Sentence case — only the first word capitalised.</td></tr>
+          <tr><td><strong>desk</strong></td><td>One of the four pillars: Intentional, Mindful, Clarity, or Connected.</td></tr>
+          <tr><td><strong>date</strong></td><td>The publish date, written year-month-day: <code>2026-06-14</code>.</td></tr>
+          <tr><td><strong>readingTime</strong></td><td>A rough estimate, e.g. <code>5 min</code>. (About 200 words a minute.)</td></tr>
+          <tr><td><strong>author</strong></td><td>Who wrote it. Usually <code>Zara</code>.</td></tr>
+          <tr><td><strong>dek</strong></td><td>One quiet sentence under the title — the promise of the piece.</td></tr>
+          <tr><td><strong>hero</strong></td><td>Optional photo. Leave blank for now, or see step 5.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">3</div>
+      <div>
+        <h2>Write the piece below</h2>
+        <p>Everything under the second <code>---</code> line is your article. Write in plain Markdown —
+        just type, leaving a blank line between paragraphs. The cheat-sheet at the foot of this page
+        covers everything you&rsquo;ll need: headings, a pull-quote, bold, italic, links.</p>
+        <p>Keep to the Marsh &amp; Muse voice: calm, warm, assured. Say less, beautifully.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">4</div>
+      <div>
+        <h2>Add it to the list</h2>
+        <p>Open <code>posts/manifest.json</code> and add your new filename — without the <code>.md</code> —
+        to the <strong>top</strong> of the list, inside the quote marks. The top entry always becomes the
+        lead story on the blog. Don&rsquo;t forget the comma after it.</p>
+        <pre>{
+  <span class="c">"posts"</span>: [
+    <span class="c">"the-art-of-the-unhurried-sunday"</span>,   &larr; your new post
+    <span class="c">"what-a-nervous-system-reset-looks-like"</span>
+  ]
+}</pre>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">5</div>
+      <div>
+        <h2>Add a photograph <span style="color:var(--sage-mid); font-size:1rem;">(optional)</span></h2>
+        <p>If you have a hero image, put the file in the <code>assets</code> folder, then point the
+        <code>hero</code> field at it. If you leave <code>hero</code> blank, a tasteful placeholder shows instead —
+        the post still looks complete.</p>
+        <pre><span class="c">hero:</span> assets/unhurried-sunday.jpg</pre>
+        <p style="margin-top:12px">Use warm, soft, natural-light photography — linen, eucalyptus, coffee, journalling.
+        Landscape orientation works best.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">6</div>
+      <div>
+        <h2>Save, and it&rsquo;s live</h2>
+        <p>Commit your two changes — the new <code>.md</code> file and the updated <code>manifest.json</code> —
+        to the repository. GitHub Pages publishes them automatically within a minute or two. That&rsquo;s it.
+        The post appears as the new lead, and the previous lead slides into the grid below.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="label">A gentle rhythm</span>
+      <p>The blog promises readers <strong>a new piece every Sunday morning</strong>. Until your next post is
+      published, the page shows quiet &ldquo;Coming Sunday&rdquo; cards in its place — so it never looks empty,
+      and the promise is always kept. Aim to have each week&rsquo;s post committed by Sunday morning, UK time.</p>
+    </div>
+
+    <h2 style="font-family:var(--font-display); font-weight:400; color:var(--forest); font-size:1.6rem; margin:48px 0 6px;">Markdown cheat-sheet</h2>
+    <p style="font-weight:300; font-size:14px; color:var(--sage-deep); margin:0 0 4px;">Everything you can use in the body of a post.</p>
+    <table class="cheats">
+      <tr><td><span class="code">## Heading</span></td><td>A section heading.</td></tr>
+      <tr><td><span class="code">### Smaller heading</span></td><td>A sub-heading.</td></tr>
+      <tr><td><span class="code">**bold words**</span></td><td>Emphasis. Use sparingly.</td></tr>
+      <tr><td><span class="code">*italic words*</span></td><td>A softer emphasis, or a quoted prompt.</td></tr>
+      <tr><td><span class="code">&gt; A line to feature</span></td><td>Becomes a centred pull-quote.</td></tr>
+      <tr><td><span class="code">- item</span></td><td>A bulleted list (one dash per line).</td></tr>
+      <tr><td><span class="code">1. item</span></td><td>A numbered list.</td></tr>
+      <tr><td><span class="code">[words](https://&hellip;)</span></td><td>A link.</td></tr>
+      <tr><td><span class="code">---</span></td><td>Three dashes on their own line draw a thin divider.</td></tr>
+    </table>
+
+    <div class="callout">
+      <span class="label">One thing to know</span>
+      <p>This page and the blog need to be viewed on the live GitHub Pages site (or a local server) — not by
+      double-clicking the file on your computer, which browsers block for security. On the published site it all
+      works perfectly. If you ever want to preview before committing, ask a developer to run a local server, or
+      simply commit and check the live page a minute later.</p>
+    </div>
+
+    <p style="margin-top:40px"><a class="btn" href="index.html">View The Long Field</a></p>
+  </main>
+
+  <footer class="foot">
+    <div class="fwrap">
+      <div class="fmark">Marsh &amp; Muse</div>
+      <p class="ftag">Live slowly. Live beautifully.</p>
+      <div class="legal" style="border:0; padding-top:0">&copy; 2026 Marsh &amp; Muse &middot; Internal guide for the content team</div>
+    </div>
+  </footer>
+
+</body>
+</html>
