@@ -1,0 +1,6 @@
+{
+  "_comment": "The Long Field — list of published posts, NEWEST FIRST. The first entry becomes the lead story. To publish a new post: add its filename (without .md) to the TOP of this list.",
+  "posts": [
+    "what-a-nervous-system-reset-looks-like"
+  ]
+}

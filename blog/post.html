@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Long Field &middot; Marsh &amp; Muse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="brand.css">
+</head>
+<body>
+
+  <!-- ============ SITE NAV ============ -->
+  <header class="wrap pad sitenav">
+    <a class="wordmark" href="../">Marsh &amp; Muse</a>
+    <nav>
+      <a href="#">The Journal</a>
+      <a href="#">The Story</a>
+      <a href="#">7 Day Reset</a>
+      <a href="index.html" class="active">The Blog</a>
+    </nav>
+  </header>
+
+  <!-- ============ SLIM MASTHEAD ============ -->
+  <div class="wrap pad" style="text-align:center; padding-top:22px; padding-bottom:14px; border-bottom:1px solid var(--warm-linen);">
+    <a href="index.html" style="text-decoration:none">
+      <span style="display:block; font-weight:300; font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--sage-mid); margin-bottom:8px;">The Marsh &amp; Muse Blog</span>
+      <span style="font-family:var(--font-display); font-size:30px; color:var(--forest); letter-spacing:.01em;">The Long Field</span>
+    </a>
+  </div>
+
+  <!-- ============ ARTICLE (rendered by blog.js) ============ -->
+  <main class="wrap--narrow pad article" id="article">
+    <div class="state"><strong>Turning to the page…</strong>One moment.</div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot">
+    <div class="fwrap">
+      <div class="fmark">Marsh &amp; Muse</div>
+      <p class="ftag">Live slowly. Live beautifully.</p>
+      <nav>
+        <a href="index.html">The Blog</a>
+        <a href="#">The Journal</a>
+        <a href="#">The Story</a>
+        <a href="#">7 Day Reset</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="legal">&copy; 2026 Marsh &amp; Muse &middot; marshmuse.com</div>
+    </div>
+  </footer>
+
+<script src="blog.js"></script>
+<script>
+(async function () {
+  const root = document.getElementById('article');
+  const slug = new URLSearchParams(location.search).get('p');
+
+  if (!slug) {
+    root.innerHTML = `<div class="state"><strong>No piece selected.</strong>
+      <a class="btn" style="margin-top:18px" href="index.html">Back to The Long Field</a></div>`;
+    return;
+  }
+
+  function hero(p) {
+    if (p.hero) return `<div class="plate hero"><img src="${p.hero}" alt=""></div>`;
+    return `<div class="plate hero"><span>Photograph</span></div>`;
+  }
+
+  try {
+    const p = await LF.loadPost(slug);
+    document.title = (p.title || 'The Long Field') + ' · Marsh & Muse';
+
+    const byline = [p.author, LF.prettyDate(p.date), p.readingTime].filter(Boolean).join(' &middot; ');
+
+    root.innerHTML = `
+      <a class="backlink" href="index.html">&larr;&nbsp;&nbsp;The Long Field</a>
+      <div class="article-head">
+        <span class="kicker">${p.desk || 'Marsh &amp; Muse'}</span>
+        <h1>${p.title || 'Untitled'}</h1>
+        ${p.dek ? `<p class="dek">${p.dek}</p>` : ''}
+        ${byline ? `<p class="meta byline">${byline}</p>` : ''}
+      </div>
+      ${hero(p)}
+      <div class="prose">${p.bodyHtml}</div>
+      <div class="endmark"><img src="assets/dandelion-sage.png" alt="" aria-hidden="true"></div>`;
+  } catch (e) {
+    console.error(e);
+    root.innerHTML = `<div class="state">
+      <strong>That piece couldn't be found.</strong>
+      It may have moved, or the link may be incomplete.
+      <div style="margin-top:18px"><a class="btn" href="index.html">Back to The Long Field</a></div>
+    </div>`;
+  }
+})();
+</script>
+</body>
+</html>
