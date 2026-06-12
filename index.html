@@ -23,7 +23,6 @@
     <a class="nav-link" href="#story">Story</a>
     <a class="nav-link" href="#journal">The Journal</a>
     <a class="nav-link" href="#reset">The Reset</a>
-    <a class="nav-link" href="/blog/">Blog</a>
     <a class="mm-btn mm-btn--outline nav-cta" href="#reset">Join Free</a>
   </nav>
 </header>
@@ -140,10 +139,15 @@
         A gentle week of slow living prompts, sent straight to your inbox. Begin whenever you're ready.
       </p>
       <form class="reset__form" id="resetForm" novalidate>
-        <input type="email" id="resetEmail" placeholder="Your email address" autocomplete="email" aria-label="Your email address">
-        <button type="submit">Join Free</button>
+        <label class="reset__field">
+          <input type="text" id="resetName" placeholder="Your first name" autocomplete="given-name" aria-label="Your first name">
+        </label>
+        <label class="reset__field reset__field--row">
+          <input type="email" id="resetEmail" placeholder="Your email address" autocomplete="email" aria-label="Your email address">
+          <button type="submit">Join Free</button>
+        </label>
       </form>
-      <div class="reset__confirm">Welcome. Your first day arrives tomorrow.</div>
+      <div class="reset__confirm">Welcome. Your first day is in your inbox now.</div>
       <p class="reset__fine">For women who are ready to step off the treadmill.</p>
     </div>
   </section>
@@ -156,14 +160,13 @@
     <div class="site-footer__mark">Marsh &amp; Muse</div>
     <p class="site-footer__tagline">Live slowly. Live beautifully.</p>
     <nav>
-  <a href="#journal">The Journal</a>
-  <a href="#story">The Story</a>
-  <a href="/blog/">Blog</a>
-  <a href="#reset">7 Day Reset</a>
-  <a href="https://www.pinterest.com/MarshandMuse" target="_blank" rel="noopener noreferrer">Pinterest</a>
-  <a href="https://www.instagram.com/marsh.muse" target="_blank" rel="noopener noreferrer">Instagram</a>
-  <a href="#">Contact</a>
-</nav>
+      <a href="#journal">The Journal</a>
+      <a href="#story">The Story</a>
+      <a href="#reset">7 Day Reset</a>
+      <a href="https://www.pinterest.com/YOUR_PINTEREST_HANDLE" target="_blank" rel="noopener noreferrer">Pinterest</a>
+      <a href="https://www.instagram.com/YOUR_INSTAGRAM_HANDLE" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="#">Contact</a>
+    </nav>
     <div class="site-footer__legal">© 2025 Marsh &amp; Muse · marshmuse.com</div>
   </div>
 </footer>
@@ -202,19 +205,22 @@
   var MAILERLITE_SUBSCRIBE_URL = 'https://assets.mailerlite.com/jsonp/2075724/forms/189018871730013769/subscribe';
 
   var form = document.getElementById('resetForm');
+  var nameInput = document.getElementById('resetName');
   var input = document.getElementById('resetEmail');
   var reset = document.getElementById('reset');
   function syncValid() {
-    var ok = /\S+@\S+\.\S+/.test(input.value);
+    var ok = /\S+@\S+\.\S+/.test(input.value) && nameInput.value.trim().length > 0;
     form.classList.toggle('valid', ok);
     return ok;
   }
+  nameInput.addEventListener('input', syncValid);
   input.addEventListener('input', syncValid);
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!syncValid()) return;
     if (MAILERLITE_SUBSCRIBE_URL) {
-      var body = 'fields[email]=' + encodeURIComponent(input.value) + '&ml-submit=1&anticsrf=true';
+      var body = 'fields[name]=' + encodeURIComponent(nameInput.value.trim()) +
+                 '&fields[email]=' + encodeURIComponent(input.value) + '&ml-submit=1&anticsrf=true';
       // no-cors: MailerLite returns an opaque response; the subscribe still registers server-side.
       fetch(MAILERLITE_SUBSCRIBE_URL, {
         method: 'POST',
